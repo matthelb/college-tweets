@@ -1,56 +1,61 @@
 <?php
-require_once(__DIR__ . '/TwitterOAuth/TwitterOAuth.php');
-require_once(__DIR__ . '/TwitterOAuth/Exception/TwitterException.php');
-require_once(__DIR__ . '/../config.php');
+	class Tweet_Generator {
+		public $map = array();
+		public $separators = array('#',',','.','!','?','@','$','%','^','&','*','(',')','-','+','=','"',':');
+		public $spacers = array('.', ',',';',':','?','!');
 
-use TwitterOAuth\TwitterOAuth;
+		public function add_tweet($t){
+			$m = $this->map;
+			$words = $this->get_words_from_string($t);
+			for($i = 0;$i<sizeof($words);$i++){
+				$next = ($i+1 >= sizeof($words)) ? false : $words[$i+1];
+				if(array_key_exists($words[$i], $m)){
+					array_push($m[$words[$i]], $next);
+				}
+				else{
+					$nextWords = array();
+					array_push($nextWords, $next);
+					$m[$words[$i]] = $nextWords;
+				}
+			}
+			$this->map = $m;
+		}
 
-$db = new SQLite3(DATABASE_NAME);
+		public function generate_tweet(){
+			$m = $this->map;
+			$charCount = 0;
+			$result = "";
+			$words = array();
+			$keys = array_keys($m);
+			$seed = $keys[array_rand($keys)];
+			$size = sizeof($seed);
+			array_push($words, $seed);
+			while($size < 140){
+				$nextWords = $m[$seed];
+				$word = $nextWords[array_rand($nextWords)];
+				if($word === false) break;
+				$size += sizeof($word);
+				array_push($words, $word);
+				$seed = $word;
+			}
+			for($i = 0;$i<sizeof($words);$i++) {
+				if($i > 0){
+					//if($words[$i-1] == '.' || )
+					$result .= $words[$i]." ";
+				}
+			}
+			return $result;
+		}
 
-$config = array(
-    'consumer_key' => CONSUMER_KEY,
-    'consumer_secret' => CONSUMER_SECRET,
-    'oauth_token' => OAUTH_TOKEN,
-    'oauth_token_secret' => OAUTH_TOKEN_SECRET,
-    'output_format' => 'object'
-);
-
-$t = new TwitterOAuth($config);
-
-function getCollege($id) {
-	global $db;
-	$result;
-	$statement = $db->prepare('SELECT * FROM colleges WHERE ' .
-		((is_int($id)) ? 'rowid' : 'name') . ' = :id');
-	$statement->bindValue(':id', $id, (is_int($id)) ? SQLITE3_INTEGER : SQLITE3_TEXT);
-	$result = $statement->execute()->fetchArray();
-	return $result;
-}
-
-function getTweetStrings($collegeId, $maxId=-1, $count=100, $type='recent') {
-	global $t;
-	$college = getCollege($collegeId);
-	$latitude = $college['latitude'];
-	$longitude = $college['longitude'];
-	$radius = $college['radius'];
-	$params = array(
-		'geocode' => "$latitude,$longitude,$radius" . 'mi',
-		'count' => $count,
-		'result_type' => $type
-	);
-	if ($maxId > -1) {
-		$params['max_id'] = $maxId;
+		private function get_words_from_string($t){
+			foreach($this->separators as $delimiter){
+				$t = str_replace($delimiter, " ".$delimiter." ", $t);
+			}
+			$words = explode(' ', $t);
+			for($i = 0;$i<sizeof($words);$i++) {
+				if(is_null($words[$i]) || $words[$i] == '') array_splice($words, $i, 1);
+			}
+			return $words;
+		}
 	}
-	$response = $t->get('search/tweets', $params);
-	$tweetStrings = array();
-	$tweets = $response->statuses;
-	foreach ($tweets as $tweet) {
-		array_push($tweetStrings, $tweet->text);
-	}
-	return array('strings' => $tweetStrings, 'lastId' => $tweets[sizeof($tweets)-1]->id_str);
-}
-
-function generateTweet($collegeId) {
-	return getTweetStrings($collegeId)['strings'][0];
-}
 ?>
