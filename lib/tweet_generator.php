@@ -1,9 +1,13 @@
 <?php
+	define('URL_REGEX', "/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/i");
+
 	class Tweet_Generator {
 		public $map = array();
 		public $separators = array(',','.','#','!','?','$','%','^','&','*','(',')','-','+','=','"',':',';');
 		public $space_after = array('.', ',',';','?','!',')');
 		public $no_space_after = array('#','"', '(', '@');
+
+		private $hashedWords = array();
 
 		public function add_tweet($t){
 			$m = $this->map;
@@ -44,8 +48,15 @@
 				array_push($words, $word);
 				$seed = strtolower($word);
 			}
-			if(in_array($words[0], $this->separators)) array_splice($words, 0, 1);
+			if(in_array($words[0], $this->separators)) {
+				array_splice($words, 0, 1);
+			}
 			for($i = 0;$i<sizeof($words);$i++) {
+				foreach ($this->hashedWords as $hash => $word) {
+					if ($words[$i] == $hash) {
+						$words[$i] = $word;
+					}
+				}
 				if($i > 0){
 					if(in_array($words[$i-1], $this->space_after)){	
 							if(in_array($words[$i], $this->space_after)){
@@ -71,7 +82,19 @@
 			return $result;
 		}
 
+		private function hashUniqueWords($t) {
+			if (preg_match_all(URL_REGEX, $t, $urls)) {
+				foreach ($urls as $url) {
+					$hash = hash('sha256', $url[0]);
+					$this->hashedWords[$hash] = $url[0];
+					$t = str_replace($url[0], $hash, $t);
+				}
+			}
+			return $t;
+		}
+
 		private function get_words_from_string($t){
+			$t = $this->hashUniqueWords($t);
 			foreach($this->separators as $delimiter){
 				$t = str_replace($delimiter, " " . $delimiter . " ", $t);
 			}
