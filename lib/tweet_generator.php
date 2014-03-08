@@ -5,7 +5,7 @@
 		public $map = array();
 		public $separators = array(',','.','#','!','?','$','%','^','&','*','(',')','-','+','=','"',':',';');
 		public $space_after = array('.', ',',';','?','!',')');
-		public $no_space_after = array('#','"', '(');
+		public $no_space_after = array('#','"', '(', '@');
 
 		private $hashedWords = array();
 
@@ -14,13 +14,13 @@
 			$words = $this->get_words_from_string($t);
 			for($i = 0;$i<sizeof($words);$i++){
 				$next = ($i+1 >= sizeof($words)) ? false : $words[$i+1];
-				if(array_key_exists($words[$i], $m)){
-					array_push($m[$words[$i]], $next);
+				if(array_key_exists(strtolower($words[$i]), $m)){
+					array_push($m[strtolower($words[$i])], $next);
 				}
 				else{
 					$nextWords = array();
 					array_push($nextWords, $next);
-					$m[$words[$i]] = $nextWords;
+					$m[strtolower($words[$i])] = $nextWords;
 				}
 			}
 			$this->map = $m;
@@ -33,8 +33,7 @@
 			$words = array();
 			$keys = array_keys($m);
 			$seed = $keys[array_rand($keys)];
-			$size = sizeof($seed);
-			array_push($words, $seed);
+			$size = 0;
 			while($size < 140){
 				$nextWords = $m[$seed];
 				$word = $nextWords[array_rand($nextWords)];
@@ -47,7 +46,7 @@
 				}
 				$size += sizeof($word)+1;
 				array_push($words, $word);
-				$seed = $word;
+				$seed = strtolower($word);
 			}
 			if(in_array($words[0], $this->separators)) {
 				array_splice($words, 0, 1);
