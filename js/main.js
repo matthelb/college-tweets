@@ -4,7 +4,6 @@ $(document).ready(function(){
 			$.each(data.colleges, function(i, college) {
 				$('#selectcollege').append($('<option>').html(college.name).attr('value', college.rowid));
 			});
-			$('.selectpicker').selectpicker('refresh');
 		}
 	});
 
