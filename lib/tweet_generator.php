@@ -1,8 +1,9 @@
 <?php
 	class Tweet_Generator {
 		public $map = array();
-		public $separators = array(',','.','!','?','$','%','^','&','*','(',')','-','+','=','"',':',';');
-		public $spacers = array('.', ',',';','?','!');
+		public $separators = array(',','.','#','!','?','$','%','^','&','*','(',')','-','+','=','"',':',';');
+		public $space_after = array('.', ',',';','?','!',')');
+		public $no_space_after = array('#','"', '(');
 
 		public function add_tweet($t){
 			$m = $this->map;
@@ -47,7 +48,23 @@
 			if(in_array($words[0], $this->separators)) array_splice($words, 0, 1);
 			for($i = 0;$i<sizeof($words);$i++) {
 				if($i > 0){
-
+					if(in_array($words[$i-1], $this->space_after)){	
+							if(in_array($words[$i], $this->space_after)){
+								$result .= $words[$i];
+							}
+							else{
+								$result .= " ".$words[$i];
+							}
+					}
+					else if(in_array($words[$i-1], $this->no_space_after)){
+						$result .= $words[$i];
+					}
+					else if(in_array($words[$i], $this->space_after)) {
+						$result .= $words[$i];
+					}
+					else {
+						$result .= " ".$words[$i];
+					}
 				} else {
 					$result .= $words[$i];
 				}
