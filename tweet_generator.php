@@ -33,7 +33,13 @@
 			while($size < 140){
 				$nextWords = $m[$seed];
 				$word = $nextWords[array_rand($nextWords)];
-				if($word === false) break;
+				if($word === false) {
+					if($size < 30){
+						$seed = $keys[array_rand($keys)];
+						continue;
+					}
+					else break;
+				}
 				$size += sizeof($word);
 				array_push($words, $word);
 				$seed = $word;
@@ -41,7 +47,7 @@
 			for($i = 0;$i<sizeof($words);$i++) {
 				if($i > 0){
 					//if($words[$i-1] == '.' || )
-					$result .= $words[$i]." ";
+					$result .= " ".$words[$i];
 				}
 			}
 			return $result;
