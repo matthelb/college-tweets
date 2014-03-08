@@ -6,12 +6,9 @@
 <head>
 </head>
 <body>
-	<?php
-		require_once('tweet_generator.php');
-		$generator = new Tweet_Generator();
-		$generator->add_tweet('Hello. Ananth here. Hopefully, this works! But, I don\'t know if it will!');
-		$generator->add_tweet('Please work!! Hello please work... I really hope so, otherwise it\'s going to be annoying.');
-		$generator->generate_tweet();
-	?>
+<?php
+require_once(__DIR__ . '/lib/tweet_generator.php');
+echo generateTweet('University of Southern California');
+?>
 </body>
 </html>
