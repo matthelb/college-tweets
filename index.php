@@ -1,60 +1,48 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>#college</title>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <div id="main">
+          <h1>#college</h1>
+            <select id="selectcollege">
+              <option value="">Select a college</option> 
+            </select>
+            <div id="submitbutton" class="btn btn-md btn-default">Submit</div>
+          <h4>Here's a typical tweet from a student at <span id="college">...</span></h4>
+          <p id="college-tweet"></p>
+        </div>
 
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 
-<!-- Make responsive -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
 
-<!-- Link to other files -->
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-
-<script type="text/javascript"> // start selectpicker
-    $(window).on('load', function () {
-        $('.selectpicker').selectpicker({
-            'selectedText': 'cat'
-        });
-    });
-</script>
-
-</head>
-
-<body>
-<div class="container">
-
-<h1>#college</h1>
-
-<select class="selectpicker" id="selectcollege">
-	<option value="">Select a college</option>
-	<!--<option value="usc">USC</option>
-	<option value="ucla">UCLA</option>
-	<option value="uofa">University of Arizona</option>
-	<option value="asu">Arizona State University</option>
-	<option value="stanford">Stanford University</option>
-	<option value="berkeley">UC Berkeley</option>
-	<option value="colorado">CU Boulder</option>
-	<option value="uofo">University of Oregon</option>
-	<option value="osu">Oregon State University</option>
-	<option value="udub">University of Washington</option>
-	<option value="wsu">Washington State University</option>-->
-</select>
-<div id="submitbutton" class="btn btn-md btn-default">Submit</div>
-
-<h4>
-<span>Here's a typical tweet from a student at </span><span id="college">...</span><span></span>
-</h4>
-<p id="college-tweet"></p>
-</div> <!-- close container -->
-
-<script type="text/javascript" src="js/bootstrap-select.js"></script>
-<script src="js/script.js" type="text/javascript"></script>
-</body>
-
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
 </html>
