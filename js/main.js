@@ -3,6 +3,7 @@ $(document).ready(function(){
 		if (data.success) {
 			$.each(data.colleges, function(i, college) {
 				$('#selectcollege').append($('<option>').html(college.name).attr('value', college.rowid));
+				$('#left_c_2').append($("<img>").attr("src", "./img/" + college.rowid + ".png"));
 			});
 		}
 	});
