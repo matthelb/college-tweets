@@ -49,7 +49,7 @@ function getTweetStrings($collegeId, $maxId=-1, $count=100, $type='recent') {
 	foreach ($tweets as $tweet) {
 		array_push($tweetStrings, $tweet->text);
 	}
-	return array('strings' => $tweetStrings, 'lastId' => $tweets[sizeof($tweets)-1]->id_str);
+	return array('strings' => $tweetStrings, 'lastId' => (sizeof($tweets) > 0) ? $tweets[sizeof($tweets)-1]->id_str : -1);
 }
 
 function generateTweet($collegeId) {
