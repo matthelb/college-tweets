@@ -9,19 +9,33 @@ $(document).ready(function(){
 
 	$('#submitbutton').click(function(){
 		$('#college').text($('#selectcollege').find(':selected').text());
+		$('#college-tweet').empty();
 		$.get('./ajax/tweet.php', {'college' : $('#selectcollege').find(':selected').text()}, function(data) {
 			if (data.success) {
-				$('#college-tweet').empty();
-				var tweet = link_tweet(data.tweet);
-				$('#college-tweet').append(tweet);
+				$('#college-tweet').html(linkTweet(data.tweet));
 			}
 		});
 	});
 });
 
-function link_tweet(tweetStr){
-	console.log(tweetStr);
-	var tweet = $("<div>");
+function linkTweet(tweetString){
+	console.log(tweetString);
+	twttr.txt.extractMentionsWithIndices(tweetString).forEach(function(mention, index, array){
+		tweetString = tweetString.replace(tweetString.substring(mention.indices[0], mention.indices[1]),
+			'<a href="https://twitter.com/@' + mention.screenName + '" target="_blank">@' + mention.screenName + '</a>');
+	});
+	twttr.txt.extractHashtagsWithIndices(tweetString).forEach(function(hashtag, index, array){
+		tweetString = tweetString.replace(tweetString.substring(hashtag.indices[0], hashtag.indices[1]),
+			'<a href="https://twitter.com/#' + hashtag.hashtag + '" target="_blank">#' + hashtag.hashtag + '</a>');
+	});
+	twttr.txt.extractUrlsWithIndices(tweetString).forEach(function(url, index, array){
+		tweetString = tweetString.replace(url, function(match) {
+			return '<a href="' + url + '" target="_blank">' + url + '</a>'
+		});
+	});
+	console.log(tweetString);
+	return tweetString;
+	/*var tweet = $("<div>");
 	while(tweetStr.length){
 		var index;
 		var hashtag_type = "hashtag/";
@@ -62,5 +76,5 @@ function link_tweet(tweetStr){
 			tweet.append(_href);
 		}
 	}
-	return tweet;
+	return tweet;*/
 }
