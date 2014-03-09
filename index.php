@@ -58,7 +58,10 @@
                 </div>
             </div>
         </div>
-    </div>
+
+    <p><a href="https://twitter.com/share" class="twitter-share-button"
+    data-text="test" data-hashtags="college" id="twitter-button">Tweet</a></p>
+    </div> <!-- close main -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>

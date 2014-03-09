@@ -27,6 +27,9 @@ $(document).ready(function(){
 				$('#college-twitter').text($('#selectcollege').find(':selected').text()).addClass('twitter-name');
 				$('#college-tweet').html(linkTweet(data.tweet));
 				$("#generated").text(data.count);
+				var tweet = linkTweet(data.tweet);
+				$("#twitter-button").attr("data-text", tweet);
+				$.getScript('http://platform.twitter.com/widgets.js');
 			}
 		});
 	});
