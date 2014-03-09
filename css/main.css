@@ -3,6 +3,8 @@
    ========================================================================== */
 #main {
 	text-align: center;
+	position: relative;
+	height: 100%;
 }
 
 .clearfix:after { 
@@ -129,4 +131,14 @@
 
 .loader {
 	margin:0 auto;
+}
+
+footer p {
+	background-color: black;
+	position:fixed;
+	width: 100%;
+	bottom: 0;
+	color: white;
+	height: 20px;
+	margin: 0 auto;
 }
