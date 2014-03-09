@@ -19,7 +19,7 @@ $(document).ready(function(){
 		$('#college').text($('#selectcollege').find(':selected').text());
 		$('#college-pic').empty();
 		$('#college-text p').empty();
-		$('#tweet-box').append($("<div>").addClass('loader').append($("<img>").attr("src", "img/twitter_loading.gif").attr('height', '50px')).append($("<div>").text("Generating...")));
+		$('#tweet-box').prepend($("<div>").addClass('loader').append($("<img>").attr("src", "img/twitter_loading.gif").attr('height', '50px')).append($("<div>").text("Generating...")));
 		$.get('./ajax/tweet.php', {'college' : $('#selectcollege').find(':selected').text()}, function(data) {
 			if (data.success) {
 				$('.loader').remove();
