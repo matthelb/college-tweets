@@ -50,6 +50,7 @@
                 <div id="submitbutton" class="btn btn-md btn-default" style="display:inline-block;">Generate</div>
             </div>
             <h4>Here's a typical tweet from a student at <span id="college">...</span></h4>
+            <hr />
             <div id="tweet-box">
                 <div id="college-info"></div>
                 <p id="college-tweet"></p>
