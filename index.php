@@ -56,11 +56,12 @@
                     <p id="college-twitter"></p>
                     <p id="college-tweet"></p>
                 </div>
+                <p id="tweet_button"><a href="https://twitter.com/share" class="twitter-share-button"
+                 data-text="test" data-hashtags="college" id="twitter-button">Tweet</a></p>
             </div>
         </div>
 
-    <p><a href="https://twitter.com/share" class="twitter-share-button"
-    data-text="test" data-hashtags="college" id="twitter-button">Tweet</a></p>
+
     </div> <!-- close main -->
     <div style="clear: both;"></div>
     </div>
