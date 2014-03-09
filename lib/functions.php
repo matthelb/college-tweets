@@ -37,7 +37,8 @@ function getTweetStrings($collegeId, $maxId=-1, $count=100, $type='recent') {
 	$params = array(
 		'geocode' => "$latitude,$longitude,$radius" . 'mi',
 		'count' => $count,
-		'result_type' => $type
+		'result_type' => $type,
+		'lang' => 'en'
 	);
 	if ($maxId > -1) {
 		$params['max_id'] = $maxId;
