@@ -134,11 +134,11 @@
 }
 
 footer p {
-	background-color: black;
+	background-color: rgba(221, 221, 221, 0.6);
 	position:fixed;
 	width: 100%;
 	bottom: 0;
-	color: white;
+	color:#66757f;
 	height: 20px;
 	margin: 0 auto;
 }

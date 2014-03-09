@@ -61,7 +61,7 @@
         <div style="clear: both;"></div>
     </div>
     <footer>
-         <p>Copyright©2014 Puddle of Nerds</p>
+         <p>© 2014 Puddle of Nerds</p>
     </footer>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
