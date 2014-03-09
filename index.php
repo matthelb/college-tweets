@@ -29,6 +29,10 @@
             <div id="left_c">
                 <div id="left_c_1">
                     <img src="img/twitter_left_bar.png" />
+                    <div id = "generate-counter">
+                        <div>Tweets Generated</div>
+                        <div id="generated"></div>
+                    </div>
                 </div>
                 <div id="left_c_2">
                     <p> Colleges We Support</p>

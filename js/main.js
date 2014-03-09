@@ -11,7 +11,7 @@ $(document).ready(function(){
 		if($('#selectcollege').find(':selected').attr('value') == "") return; 
 		$('#college').text($('#selectcollege').find(':selected').text());
 		$('#college-tweet').empty();
-		$('#college-tweet').append($("<img>").attr("src", "img/ajax_loader_blue.gif"));
+		$('#college-tweet').append($("<div>").append($("<img>").attr("src", "img/twitter_loading.gif").attr('height', '50px')).append($("<div>").text("Generating...")));
 		$.get('./ajax/tweet.php', {'college' : $('#selectcollege').find(':selected').text()}, function(data) {
 			if (data.success) {
 				$('#college-tweet').empty();
