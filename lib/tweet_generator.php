@@ -45,7 +45,7 @@
 					}
 					else break;
 				}
-				$size += sizeof($word)+1;
+				$size += strlen($word)+1;
 				array_push($words, $word);
 				$seed = strtolower($word);
 			}
