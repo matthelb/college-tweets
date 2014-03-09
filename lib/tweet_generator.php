@@ -1,11 +1,11 @@
 <?php
 	define('URL_REGEX', "/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/i");
+	define('VALID_REGEX', "/[^\w\s,.'@\#!?\$%\^&\*-+=:;\/]*/");
 
 	class Tweet_Generator {
 		public $map = array();
-		public $removables = array('"', '(', ')');
-		public $separators = array(',','.','#','!','?','$','%','^','&','*','(',')','-','+','=',':',';');
-		public $space_after = array('.', ',',';','?','!',')');
+		public $separators = array(',','.','#','!','?','$','%','^','&','*','-','+','=',':',';');
+		public $space_after = array('.', ',',';','?','!');
 		public $no_space_after = array('#', '@');
 
 		private $hashedWords = array();
@@ -96,9 +96,7 @@
 
 		private function get_words_from_string($t){
 			$t = $this->hashUniqueWords($t);
-			foreach ($this->removables as $removable) {
-				$t = str_replace($removable, '', $t);
-			}
+			$t = preg_replace(VALID_REGEX, '', $t);
 			foreach($this->separators as $delimiter){
 				$t = str_replace($delimiter, " " . $delimiter . " ", $t);
 			}
