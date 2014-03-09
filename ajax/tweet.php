@@ -9,8 +9,11 @@ if(isset($_GET['college'])){
 	$update->bindValue(':val', $result['count']+1, SQLITE3_INTEGER);
 	$update->execute();
 	$result = $statement->execute()->fetchArray(SQLITE3_ASSOC);
-	
-	echo(json_encode(array("success"=>true, "tweet" => generateTweet($_GET['college']), "count" => $result['count'])));
+	try {
+		echo(json_encode(array("success"=>true, "tweet" => generateTweet($_GET['college']), "count" => $result['count'])));
+	} catch (TwitterException $e) {
+		echo(json_encode(array("success"=>false)));
+	}
 }
 else{
 	http_response_code(400);

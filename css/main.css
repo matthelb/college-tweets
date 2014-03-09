@@ -27,6 +27,7 @@
 #left_c_1 {
 	background-color: white;
 	border-radius: 5px;
+	padding-bottom: 10px;
 }
 
 #left_c_2 {
@@ -72,6 +73,7 @@
 }
 
 #tweets_g {
+	padding-top: 5px;
 	padding-left: 8px;
 	text-align: left;
 	font-size: 13px;
@@ -84,6 +86,7 @@
 	padding-left: 8px;
 	color: #09abdc;
 	font-size: 25px;
+	margin-top: 0;
 }
 
 #college-info img {

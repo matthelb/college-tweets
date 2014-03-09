@@ -20,8 +20,4 @@ if (isset($_GET['collegeId'])) {
 	}
 	echo(json_encode(array("success"=>true, "colleges" => $colleges)));
 }
-
-
-
-
 ?>	
