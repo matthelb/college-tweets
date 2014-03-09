@@ -45,12 +45,13 @@
 
 #right_c {
 	width: 600px;
-	padding: 20px;
 	background-color: white;
 	margin-left: 5px;
 	border-radius: 5px;
 	display: inline-block;
 	vertical-align: top;
+	height: 100%;
+	padding: 10px;
 
 }
 
@@ -58,4 +59,28 @@
 	width: 100%;
 	margin: 0 auto;
 	display: inline-block;
+}
+
+#right_header {
+	font-size: 20px;
+	color: #66757f;
+}
+
+#right_c hr {
+	margin-top: 0;
+}
+
+#tweets_g {
+	padding-left: 8px;
+	text-align: left;
+	font-size: 13px;
+	color: #aaaaaa;
+
+}
+
+#generated {
+	text-align: left;
+	padding-left: 8px;
+	color: #09abdc;
+	font-size: 25px;
 }

@@ -30,9 +30,9 @@
                 <div id="left_c_1">
                     <img src="img/left_top.png" />
                     <div id = "generate-counter">
-                        <div>Tweets Generated</div>
+                        <div id="tweets_g">Tweets Generated</div>
                         <div id="generated"></div>
-                    <img src="img/left_bottom.png" />
+                    <!--<img src="img/left_bottom.png" />-->
 
                     </div>
                 </div>
@@ -41,6 +41,8 @@
                 </div>
             </div>
             <div id="right_c">
+                <p id="right_header">Select a school to generate a college tweet</p>
+                <hr />
                 <div id = "right_c_top_row">          
                     <select class="form-control" style="display:inline-block;" id="selectcollege">
                         <option value="">Select a college</option> 
