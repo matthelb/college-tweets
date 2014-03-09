@@ -61,7 +61,7 @@ function generateTweet($collegeId) {
 		}
 		$tweets = getTweetStrings($collegeId, bcsub($tweets['lastId'], 1));
 	}
-	if ($collegeId == 'University of California Los Angeles') {
+	if ($collegeId == 'University of California Los Angeles' && mt_rand(0, 2) > 1) {
 		$uclaTweets = array(
 			"Hate being second-rate #ImALoser",
 			"Four years of school just to work at In'N'Out #UCLADegree",
@@ -71,7 +71,7 @@ function generateTweet($collegeId) {
 			"I'm a Bruin. Ima bruin. imabruin. Hehehehehe #SchoolPride",
 			"Trying to change the world, but only making it worse! #oops #Bruin4Lyfe"
 		);
-		return $uclaTweets[rand(0, sizeof($uclaTweets) - 1)];
+		return $uclaTweets[mt_rand(0, sizeof($uclaTweets) - 1)];
 	} else {
 		return $generator->generate_tweet();
 	}
