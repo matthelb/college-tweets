@@ -5,15 +5,48 @@
 	text-align: center;
 }
 
+#selectcollege {
+	width:50%;
+}
+#title_bar{
+	background-color: black;
+}
 
+#title_bar img{
+	width: 120px;
+}
 
+#left_c {
+	width: 300px;
+	display: inline-block;
+	vertical-align: top;
 
+}
 
+#left_c_1 {
+	background-color: white;
+	border-radius: 15px;
+}
 
+#left_c_2 {
+	margin-top: 10px;
+	background-color: white;
+	border-radius: 15px;
+}
 
+#right_c {
+	width: 600px;
+	padding: 20px;
+	background-color: white;
+	margin-left: 8px;
+	border-radius: 15px;
+	display: inline-block;
+	vertical-align: top;
 
+}
 
-
-
-
-
+#columns {
+	width: 100%;
+	margin: 0 auto;
+	display: inline-block;
+}
