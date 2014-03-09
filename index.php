@@ -29,13 +29,12 @@
           <p id="title_bar"><img src="img/title.png" /></p>
             <div id="columns">
             <div id="left_c">
-                <img src="img/twitter_left_bar.png" />
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div id="left_c_1">
+                    <img src="img/twitter_left_bar.png" />
+                </div>
+                <div id="left_c_2">
+                    <p> Colleges We Support</p>
+                </div>
             </div>
             <div id="right_c">          
                 <select id="selectcollege">
