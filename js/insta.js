@@ -2,7 +2,7 @@
 var dbFile:File = File.applicationDirectory.resolvePath("db/Universities.sqlite.");
 $(document).ready(function() {
 // Get Instagram photos from specific location and add markers
-
+  
     function getPhotosByLocation(latitude, longitude, dst) {
         var url = 'https://api.instagram.com/v1/media/search?lat=%1&lng=%2&distance=%3?client_id=%4&access_token=%5'
             .replace('%1', File.latitude)
@@ -26,9 +26,11 @@ $(document).ready(function() {
                })
            }
              $('#submitbutton').submit(function(e) {
-                console.log('click');
-
-                getPhotosByLocation();
+                $.get('./ajax/colleges.php', {'collegeId' : $('#selectcollege').find(':selected').value()}, function(data){
+                  if (data.success) {
+                    getPhotosByLocation(data.college.latitude, data.college.longitude, data.college.radius);
+                  }
+                });      
               }); 
 
         });
