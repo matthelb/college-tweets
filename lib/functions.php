@@ -61,6 +61,19 @@ function generateTweet($collegeId) {
 		}
 		$tweets = getTweetStrings($collegeId, bcsub($tweets['lastId'], 1));
 	}
-	return $generator->generate_tweet();
+	if ($collegeId == 'University of California Los Angeles') {
+		$uclaTweets = array(
+			"Hate being second-rate #ImALoser",
+			"Four years of school just to work at In'N'Out #UCLADegree",
+			"Why did I Bruin my life? #NeedToTransfer",
+			"LOL I'm actually paying money for this school!!!",
+			"(unintelligible garbage) #YouSeeElAy",
+			"I'm a Bruin. Ima bruin. imabruin. Hehehehehe #SchoolPride",
+			"Trying to change the world, but only making it worse! #oops #Bruin4Lyfe"
+		);
+		return $uclaTweets[rand(0, sizeof($uclaTweets) - 1)];
+	} else {
+		return $generator->generate_tweet();
+	}
 }
 ?>
