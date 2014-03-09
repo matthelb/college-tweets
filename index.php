@@ -20,8 +20,6 @@
         </style>
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/logo.css">
-
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
@@ -36,11 +34,13 @@
                     <p> Colleges We Support</p>
                 </div>
             </div>
-            <div id="right_c">          
-                <select id="selectcollege">
-                  <option value="">Select a college</option> 
-                </select>
-                <div id="submitbutton" class="btn btn-md btn-default">Submit</div>
+            <div id="right_c">
+                <div id = "right_c_top_row">          
+                    <select class="form-control" style="display:inline-block;" id="selectcollege">
+                        <option value="">Select a college</option> 
+                    </select>
+                    <div id="submitbutton" class="btn btn-md btn-default" style="display:inline-block;">Generate</div>
+                </div>
               <h4>Here's a typical tweet from a student at <span id="college">...</span></h4>
               <p id="college-tweet"></p>
             </div>

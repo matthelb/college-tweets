@@ -5,6 +5,9 @@
 	text-align: center;
 }
 
+#selectcollege {
+	width:50%;
+}
 #title_bar{
 	background-color: black;
 }
@@ -56,15 +59,3 @@
 	margin: 0 auto;
 	display: inline-block;
 }
-
-
-
-
-
-
-
-
-
-
-
-
