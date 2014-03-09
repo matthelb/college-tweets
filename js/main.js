@@ -7,6 +7,12 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	$.get('./ajax/get_counter.php', function(d){
+		if(d.success){
+			$("#generated").text(d.count);
+		}
+	});
 
 	$('#submitbutton').click(function(){
 		if($('#selectcollege').find(':selected').attr('value') == "") return; 
@@ -15,7 +21,13 @@ $(document).ready(function(){
 		$('#college-tweet').append($("<div>").append($("<img>").attr("src", "img/twitter_loading.gif").attr('height', '50px')).append($("<div>").text("Generating...")));
 		$.get('./ajax/tweet.php', {'college' : $('#selectcollege').find(':selected').text()}, function(data) {
 			if (data.success) {
+				$('#college-tweet').empty();
 				$('#college-tweet').html(linkTweet(data.tweet));
+				$.get('./ajax/increment_counter.php', function(d){
+					if(d.success){
+						$("#generated").text(d.count);
+					}
+				});
 			}
 		});
 	});
