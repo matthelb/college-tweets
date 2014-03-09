@@ -23,11 +23,7 @@ $(document).ready(function(){
 			if (data.success) {
 				$('#college-tweet').empty();
 				$('#college-tweet').html(linkTweet(data.tweet));
-				$.get('./ajax/increment_counter.php', function(d){
-					if(d.success){
-						$("#generated").text(d.count);
-					}
-				});
+				$("#generated").text(data.count);
 			}
 		});
 	});
