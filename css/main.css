@@ -87,3 +87,18 @@
 	font-size: 25px;
 	margin-top: 0;
 }
+
+#college-info img {
+	height:50px;
+	float:left;
+	padding: 2px 5px 0 2px;
+}
+
+.twitter-name {
+	text-align:left;
+	font-weight: bold;
+}
+
+#college-tweet {
+	text-align: left;
+}

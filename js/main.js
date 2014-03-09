@@ -17,11 +17,14 @@ $(document).ready(function(){
 	$('#submitbutton').click(function(){
 		if($('#selectcollege').find(':selected').attr('value') == "") return; 
 		$('#college').text($('#selectcollege').find(':selected').text());
+		$('#college-info').empty();
 		$('#college-tweet').empty();
-		$('#college-tweet').append($("<div>").append($("<img>").attr("src", "img/twitter_loading.gif").attr('height', '50px')).append($("<div>").text("Generating...")));
+		$('#tweet-box').append($("<div>").addClass('loader').append($("<img>").attr("src", "img/twitter_loading.gif").attr('height', '50px')).append($("<div>").text("Generating...")));
 		$.get('./ajax/tweet.php', {'college' : $('#selectcollege').find(':selected').text()}, function(data) {
 			if (data.success) {
-				$('#college-tweet').empty();
+				$('.loader').remove();
+				$('#college-info').append($("<img>").attr("src", "./img/" + $('#selectcollege').find(':selected').attr('value') + ".png"));
+				$('#college-info').append($("<div>").text($('#selectcollege').find(':selected').text()).addClass('twitter-name'));
 				$('#college-tweet').html(linkTweet(data.tweet));
 				$("#generated").text(data.count);
 			}
