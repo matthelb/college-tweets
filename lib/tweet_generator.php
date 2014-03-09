@@ -35,17 +35,16 @@
 			$keys = array_keys($m);
 			$seed = $keys[array_rand($keys)];
 			$size = 0;
-			while($size < 140){
+			while(sizeof($words) < 28){
 				$nextWords = $m[$seed];
 				$word = $nextWords[array_rand($nextWords)];
 				if($word === false) {
-					if($size < 30){
+					if(sizeof($words) < 3){
 						$seed = $keys[array_rand($keys)];
 						continue;
 					}
 					else break;
 				}
-				$size += strlen($word)+1;
 				array_push($words, $word);
 				$seed = strtolower($word);
 			}

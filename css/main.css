@@ -5,8 +5,9 @@
 	text-align: center;
 }
 
-#selectcollege {
-	width:50%;
+.select2-container {
+	padding-right:10px;
+	width:300px;
 }
 #title_bar{
 	background-color: black;

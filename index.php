@@ -44,7 +44,7 @@
             <p id="right_header">Select a school to generate a college tweet</p>
             <hr />
             <div id = "right_c_top_row">          
-                <select class="form-control" style="display:inline-block;" id="selectcollege">
+                <select style="display:inline-block;" id="selectcollege">
                     <option value="">Select a college</option> 
                 </select>
                 <div id="submitbutton" class="btn btn-md btn-default" style="display:inline-block;">Generate</div>
@@ -63,6 +63,11 @@
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/twitter-text.js"></script>
     <script src="js/main.js"></script>
+    <link href="select2/select2.css" rel="stylesheet"/>
+    <script src="select2/select2.js"></script>
+    <script>
+        $(document).ready(function() { $("#selectcollege").select2(); });
+    </script>
 
     <script>
         var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
