@@ -27,7 +27,7 @@
             <select id="selectcollege">
               <option value="">Select a college</option> 
             </select>
-            <div id="submitbutton" class="btn btn-md btn-default">Submit</div>
+            <div id="submitbutton" class="btn btn-md btn-default">Generate</div>
           <h4>Here's a typical tweet from a student at <span id="college">...</span></h4>
           <p id="college-tweet"></p>
         </div>

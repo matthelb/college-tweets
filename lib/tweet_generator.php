@@ -3,9 +3,10 @@
 
 	class Tweet_Generator {
 		public $map = array();
-		public $separators = array(',','.','#','!','?','$','%','^','&','*','(',')','-','+','=','"',':',';');
+		public $removables = array('"', '(', ')');
+		public $separators = array(',','.','#','!','?','$','%','^','&','*','(',')','-','+','=',':',';');
 		public $space_after = array('.', ',',';','?','!',')');
-		public $no_space_after = array('#','"', '(', '@');
+		public $no_space_after = array('#', '@');
 
 		private $hashedWords = array();
 
@@ -95,6 +96,9 @@
 
 		private function get_words_from_string($t){
 			$t = $this->hashUniqueWords($t);
+			foreach ($this->removables as $removable) {
+				$t = str_replace($removable, '', $t);
+			}
 			foreach($this->separators as $delimiter){
 				$t = str_replace($delimiter, " " . $delimiter . " ", $t);
 			}
