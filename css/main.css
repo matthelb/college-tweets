@@ -116,7 +116,12 @@
 	font-weight: bold;
 }
 
+#college-twitter {
+	margin-bottom: 0;
+}
+
 #college-tweet {
+	margin-top: 0;
 	text-align: left;
 }
 
