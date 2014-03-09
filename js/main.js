@@ -39,13 +39,19 @@ function linkTweet(tweetString){
 			'<a href="' + url.url + '" target="_blank">' + url.url + '</a>'
 		);
 	});
+	var newString = '';
 	twttr.txt.extractMentionsWithIndices(tweetString).forEach(function(mention, index, array){
-		tweetString = tweetString.replace('@' + mention.screenName,
+		newString = newString + tweetString.replace('@' + mention.screenName,
 			'<a href="https://twitter.com/@' + mention.screenName + '" target="_blank">@' + mention.screenName + '</a>');
+		tweetString = tweetString.substr(mention.indices[1]);
 	});
 	twttr.txt.extractHashtagsWithIndices(tweetString).forEach(function(hashtag, index, array){
-		tweetString = tweetString.replace('#' + hashtag.hashtag,
+		newString = newString + tweetString.replace('#' + hashtag.hashtag,
 			'<a href="https://twitter.com/#' + hashtag.hashtag + '" target="_blank">#' + hashtag.hashtag + '</a>');
+		tweetString = tweetString.substr(hashtag.indices[1]);
 	});
-	return tweetString;
+	if (newString.length == 0) {
+		newString = tweetString;
+	}
+	return newString;
 }
