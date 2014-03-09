@@ -28,10 +28,12 @@
             <div id="columns">
             <div id="left_c">
                 <div id="left_c_1">
-                    <img src="img/twitter_left_bar.png" />
+                    <img src="img/left_top.png" />
                     <div id = "generate-counter">
                         <div>Tweets Generated</div>
                         <div id="generated"></div>
+                    <img src="img/left_bottom.png" />
+
                     </div>
                 </div>
                 <div id="left_c_2">
