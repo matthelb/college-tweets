@@ -8,6 +8,7 @@ $(document).ready(function(){
 	});
 
 	$('#submitbutton').click(function(){
+		if($('#selectcollege').find(':selected').attr('value') == "") return; 
 		$('#college').text($('#selectcollege').find(':selected').text());
 		$('#college-tweet').empty();
 		$('#college-tweet').append($("<img>").attr("src", "img/ajax_loader_blue.gif"));

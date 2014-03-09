@@ -34,11 +34,13 @@
                     <p> Colleges We Support</p>
                 </div>
             </div>
-            <div id="right_c">          
-                <select class="form-control" style="float:left;" id="selectcollege">
-                  <option value="">Select a college</option> 
-                </select>
-                <div id="submitbutton" class="btn btn-md btn-default" style="float:left;">Generate</div>
+            <div id="right_c">
+                <div id = "right_c_top_row">          
+                    <select class="form-control" style="display:inline-block;" id="selectcollege">
+                        <option value="">Select a college</option> 
+                    </select>
+                    <div id="submitbutton" class="btn btn-md btn-default" style="display:inline-block;">Generate</div>
+                </div>
               <h4>Here's a typical tweet from a student at <span id="college">...</span></h4>
               <p id="college-tweet"></p>
             </div>
