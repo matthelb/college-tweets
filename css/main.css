@@ -117,10 +117,12 @@
 }
 
 #college-twitter {
+	padding-left: 3px;
 	margin-bottom: 0;
 }
 
 #college-tweet {
+	padding-left: 3px;
 	margin-top: 0;
 	text-align: left;
 }
