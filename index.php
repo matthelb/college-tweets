@@ -41,7 +41,7 @@
             </div>
         </div>
         <div id="right_c">
-            <p id="right_header">Select a school to generate a college tweet</p>
+            <p id="right_header">Select a school to generate a #college tweet</p>
             <hr />
             <div id = "right_c_top_row">          
                 <select style="display:inline-block;" id="selectcollege">
@@ -49,7 +49,7 @@
                 </select>
                 <div id="submitbutton" class="btn btn-md btn-default" style="display:inline-block;">Generate</div>
             </div>
-            <h4>Here's a typical tweet from a student at <span id="college">...</span></h4>
+            <h4>A typical tweet at <span id="college">...</span> </h4>
             <div id="tweet-box">
                 <div id="college-pic"></div>
                 <div id="college-text" class="clearfix">
