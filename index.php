@@ -51,8 +51,11 @@
             </div>
             <h4>Here's a typical tweet from a student at <span id="college">...</span></h4>
             <div id="tweet-box">
-                <div id="college-info"></div>
-                <p id="college-tweet"></p>
+                <div id="college-pic"></div>
+                <div id="college-text" class="clearfix">
+                    <p id="college-twitter"></p>
+                    <p id="college-tweet"></p>
+                </div>
             </div>
         </div>
     </div>

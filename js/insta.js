@@ -25,7 +25,7 @@ $(document).ready(function() {
                    
                })
            }
-             $('#submitbutton').submit(function(e) {
+             $('#submitbutton').click(function(e) {
                 $.get('./ajax/colleges.php', {'collegeId' : $('#selectcollege').find(':selected').value()}, function(data){
                   if (data.success) {
                     getPhotosByLocation(data.college.latitude, data.college.longitude, data.college.radius);

@@ -5,10 +5,18 @@
 	text-align: center;
 }
 
+.clearfix:after { 
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
 .select2-container {
 	padding-right:10px;
 	width:300px;
 }
+
 #title_bar{
 	background-color: black;
 }
@@ -89,10 +97,17 @@
 	margin-top: 0;
 }
 
-#college-info img {
+#college-pic img {
 	height:50px;
 	float:left;
+	display:inline-block;
 	padding: 2px 5px 0 2px;
+}
+
+#college-text {
+	width:80%;
+	float:left;
+	display:inline-block;
 }
 
 .twitter-name {
@@ -102,4 +117,8 @@
 
 #college-tweet {
 	text-align: left;
+}
+
+.loader {
+	margin:0 auto;
 }
