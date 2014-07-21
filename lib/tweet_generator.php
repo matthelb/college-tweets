@@ -5,9 +5,11 @@
 	class Tweet_Generator {
 		public $map = array();
 		public $separators = array(',','.','#','!','?','$','%','^','&','*','-','+','=',':',';');
-		public $space_after = array('.', ',',';','?','!');
-		public $no_space_after = array('#', '@');
+		public $space_after = array('.', ',',';','?','!', ':');
+		public $no_space_after = array('#');
+		public $htmlEntities = array(
 
+		);
 		private $hashedWords = array();
 
 		public function add_tweet($t){
@@ -29,17 +31,19 @@
 
 		public function generate_tweet(){
 			$m = $this->map;
-			$charCount = 0;
-			$result = "";
+			$result = '';
 			$words = array();
 			$keys = array_keys($m);
-			$seed = $keys[array_rand($keys)];
-			$size = 0;
+			$key = array_rand($keys);
+			$seed = '';
+			while(!ctype_alpha($seed)) {
+				$seed = $keys[array_rand($keys)]; 
+			}
 			while(sizeof($words) < 28){
 				$nextWords = $m[$seed];
 				$word = $nextWords[array_rand($nextWords)];
 				if($word === false) {
-					if(sizeof($words) < 3){
+					if(sizeof($words) < 10){
 						$seed = $keys[array_rand($keys)];
 						continue;
 					}
@@ -48,8 +52,8 @@
 				array_push($words, $word);
 				$seed = strtolower($word);
 			}
-			if(in_array($words[0], $this->separators)) {
-				array_splice($words, 0, 1);
+			if($words[sizeof($words) - 1] == '#' || $words[sizeof($words) - 1] == '@') {
+				$words = array_slice($words, 0, $words[sizeof($words) - 2]);
 			}
 			for($i = 0;$i<sizeof($words);$i++) {
 				foreach ($this->hashedWords as $hash => $word) {
@@ -94,6 +98,7 @@
 		}
 
 		private function get_words_from_string($t){
+			$t = html_entity_decode($t);
 			$t = $this->hashUniqueWords($t);
 			$t = preg_replace(VALID_REGEX, '', $t);
 			foreach($this->separators as $delimiter){

@@ -55,11 +55,8 @@ function getTweetStrings($collegeId, $maxId=-1, $count=100, $type='recent') {
 function generateTweet($collegeId) {
 	$generator = new Tweet_Generator();
 	$tweets = getTweetStrings($collegeId);
-	for ($i = 0; $i < 4; ++$i) {
-		foreach ($tweets['strings'] as $tweet) {
-			$generator->add_tweet($tweet);
-		}
-		$tweets = getTweetStrings($collegeId, bcsub($tweets['lastId'], 1));
+	foreach ($tweets['strings'] as $tweet) {
+		$generator->add_tweet($tweet);
 	}
 	if ($collegeId == 'University of California Los Angeles' && mt_rand(0, 2) > 1) {
 		$uclaTweets = array(
